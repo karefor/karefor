@@ -1,0 +1,12 @@
+>D; Definitions ";" has to be set before remarks
+dimmer=0
+>B; Section executed on boot 
+=>print BOOT executed
+>F; >S=do every second >F=do every 100ms 
+dimmer+=1; increase dimmer value
+if dimmer>100
+then dimmer=0
+endif
+=>dimmer %dimmer%; write value on GPIO-Port. To be able to watch the brightness via blue Reset-LED set GPIO2 in configure Module and Configure Template to pwm_i
+>W; display on Web-User Interface (this will be not as fast refreshed as the >F Section works)
+dimmer %dimmer%
