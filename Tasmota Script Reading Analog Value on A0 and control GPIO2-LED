@@ -1,0 +1,13 @@
+>D; Definitions, ";" is used for remarks
+dimmer=0
+
+>B; Section executed on boot
+=>print BOOT executed
+
+>F; >F will be executed every 100ms, >S every second
+dimmer=(adc(1)/10.24); adc(1) reads voltage on Pin A0 devided through 10.24 to get exactly 100 if result ist more the programme will get stuck
+print %(adc(1)/10)%
+
+=>dimmer %dimmer% ; used to set value on GPIO2 an reset-LED, before define in Configuraton Module and Configuration Template GPIO2 as pwm_i
+>W; Web-User-Interface (will be updated slower than the >F Section)
+dimmer %dimmer% %adc(1)%
